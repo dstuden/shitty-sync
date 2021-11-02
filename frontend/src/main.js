@@ -1,6 +1,7 @@
 import App from './App.vue'
 import { createApp } from 'vue'
 import router from './router'
+import store from './store'
 
 import * as Sentry from "@sentry/vue";
 import { Integrations } from "@sentry/tracing";
@@ -18,7 +19,7 @@ if (['dark', 'light'].includes(theme)) {
     root.dataset['theme'] = 'dark';
 }
 
-const app = createApp(App);
+const app = createApp(App)
 
 Sentry.init({
     app,
@@ -33,6 +34,7 @@ Sentry.init({
 });
 
 app.use(router);
+app.use(store);
 app.mount('#app');
 console.log('%c Shitty Sync ', 'color: #FF8C00; font-size: 48px; text-shadow: #FC0 0 0 10px;')
 console.log('%chi', 'font-size:5px');
