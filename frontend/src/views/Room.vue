@@ -29,6 +29,7 @@
         <div class="chat">
             <div class="top">
                 <span>{{ roomCode }}</span>
+                <icon class="icon" file="/icons.svg" :name="admin ? 'settings':'youtube'" />
                 <share />
                 <media-picker v-if="admin" @select="changeMedia" />
                 <theme-toggle />
@@ -40,6 +41,7 @@
                 :timeOffset="timeOffset"
                 v-if="debug.isDev"
             />
+            <settings />
             <div class="messages" ref="msgbox">
                 <message
                     v-for="(msg, index) in messages"
@@ -86,6 +88,8 @@ import Videojs from "../components/VideoJS.vue";
 import Devtools from "../components/Devtools.vue";
 
 import roomMixin from "@/room.js";
+import Settings from '../components/Settings.vue';
+import Icon from '../components/Icon.vue';
 
 export default {
     mixins: [roomMixin],
@@ -98,6 +102,8 @@ export default {
         MediaPicker,
         Videojs,
         Devtools,
+        Settings,
+        Icon,
     },
     data() {
         return {
